@@ -6,7 +6,7 @@ class Posts extends Component {
   state = {};
   render() {
     return (
-      <form className='col-md-10'>
+      <form className='list'>
         <legend className='text-center'>Post Listing Page</legend>
         <Listing posts={this.props.posts} deletePost={this.props.deletePost} />
       </form>

@@ -32,7 +32,6 @@ class Router extends Component {
   };
 
   deletePost = id => {
-    //console.log(id);
     axios
       .delete(`https://jsonplaceholder.typicode.com/posts/${id}`)
       .then(res => {
@@ -95,63 +94,58 @@ class Router extends Component {
       <BrowserRouter>
         <div className='container'>
           <Header />
-          <div>
-            <Navigation />
-            <Switch>
-              <Route
-                exact
-                path='/'
-                render={() => {
-                  return (
-                    <Posts
-                      posts={this.state.posts}
-                      deletePost={this.deletePost}
-                    />
-                  );
-                }}
-              />
-
-              <Route
-                exact
-                path='/post/:postId'
-                render={props => {
-                  let idPost = props.location.pathname.replace('/post/', '');
-
-                  const posts = this.state.posts;
-                  let filter;
-                  filter = posts.filter(post => post.id === Number(idPost));
-
-                  return <SinglePost post={filter[0]} />;
-                }}
-              />
-              <Route
-                exact
-                path='/create'
-                render={() => {
-                  return <Form createPost={this.createPost} />;
-                }}
-              />
-              <Route
-                exact
-                path='/todo'
-                render={() => {
-                  return <TodoPage />;
-                }}
-              />
-              <Route
-                exact
-                path='/edit/:postId'
-                render={props => {
-                  let idPost = props.location.pathname.replace('/edit/', '');
-                  const posts = this.state.posts;
-                  let filter;
-                  filter = posts.filter(post => post.id === Number(idPost));
-                  return <EditPost post={filter[0]} editPost={this.editPost} />;
-                }}
-              />
-            </Switch>
-          </div>
+          <Navigation />
         </div>
+        <Switch>
+          <Route
+            exact
+            path='/'
+            render={() => {
+              return (
+                <Posts posts={this.state.posts} deletePost={this.deletePost} />
+              );
+            }}
+          />
+
+          <Route
+            exact
+            path='/post/:postId'
+            render={props => {
+              let idPost = props.location.pathname.replace('/post/', '');
+
+              const posts = this.state.posts;
+              let filter;
+              filter = posts.filter(post => post.id === Number(idPost));
+
+              return <SinglePost post={filter[0]} />;
+            }}
+          />
+          <Route
+            exact
+            path='/create'
+            render={() => {
+              return <Form createPost={this.createPost} />;
+            }}
+          />
+          <Route
+            exact
+            path='/todo'
+            render={() => {
+              return <TodoPage />;
+            }}
+          />
+          <Route
+            exact
+            path='/edit/:postId'
+            render={props => {
+              let idPost = props.location.pathname.replace('/edit/', '');
+              const posts = this.state.posts;
+              let filter;
+              filter = posts.filter(post => post.id === Number(idPost));
+              return <EditPost post={filter[0]} editPost={this.editPost} />;
+            }}
+          />
+        </Switch>
       </BrowserRouter>
     );
   }
