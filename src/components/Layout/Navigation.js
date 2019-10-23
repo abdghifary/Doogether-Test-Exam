@@ -30,25 +30,19 @@ const Navigation = () => {
     <StyledNav className='col-md-2'>
       <StyledUl>
         <li>
-          <div className='sidebar_item'>
-            <StyledButton>
-              <Link to={'/'}>List All Posts</Link>
-            </StyledButton>
-          </div>
+          <StyledButton>
+            <Link to={'/'}>List All Posts</Link>
+          </StyledButton>
         </li>
         <li>
-          <div className='sidebar_item'>
-            <Link to={'/create'}>
-              <StyledButton>Add New Post</StyledButton>
-            </Link>
-          </div>
+          <Link to={'/create'}>
+            <StyledButton>Add New Post</StyledButton>
+          </Link>
         </li>
         <li>
-          <div className='sidebar_item'>
-            <StyledButton>
-              <Link to={'/todo'}>To Do</Link>
-            </StyledButton>
-          </div>
+          <StyledButton>
+            <Link to={'/todo'}>To Do</Link>
+          </StyledButton>
         </li>
       </StyledUl>
     </StyledNav>
